@@ -1,4 +1,3 @@
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,21 +16,20 @@ namespace Project130219
 
         public static bool CreateNewButton(int x1, int y1, int x2, int y2)
         {
-            MyButton Newbutton = new MyButton(new Point(x1, y1), new Point(x2, y2));
-            if (buttonIndex < MaxButtons)
+            if (buttonIndex < MaxButtons && x1 < MAX_WIDTH && x1 > 0 && x2 > 0 && x2 < MAX_WIDTH && y1 < MAX_HEIGHT && y1 > 0 && y2 < MAX_HEIGHT && y2 > 0)
             {
-                buttons[buttonIndex] = Newbutton;
-                buttonIndex++;
-                return true;
+                MyButton Newbutton = new MyButton(new Point(x1, y1), new Point(x2, y2));
+                if (Newbutton.SetBottomRight(new Point(x1, y1)) && Newbutton.SetTopLeft(new Point(x2, y2)))
+                {
+                    buttons[buttonIndex] = Newbutton;
+                    buttonIndex++;
+                    return true;
+                }
+
             }
-            else
-            {
-                Console.WriteLine("the max number of buttons is: " + MaxButtons);
-            }
-            
+
             return false;
         }
-
 
         public static bool MoveButton(int buttonNumber, int x, int y)
         {
@@ -65,9 +63,10 @@ namespace Project130219
 
         public static void ClearAllButton()
         {
-            if (buttons.Length > 0)
+            if (buttonIndex > 0)
             {
                 buttons = new MyButton[MaxButtons];
+                buttonIndex = 0;
             }
         }
 
