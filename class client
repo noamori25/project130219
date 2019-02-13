@@ -1,0 +1,28 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Project130219;
+
+namespace Client
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            MyCanvas.CreateNewButton(5, 3, 7, 2);
+            MyCanvas.CreateNewButton(8, 4, 10, 3);
+            MyCanvas.CreateNewButton(6, 5, 11, 4);
+
+            MyCanvas.GetCurrentNumberOfButtons();
+            MyCanvas.GetTheMaxHeightOfAButton();
+            MyCanvas.GetTheMaxWidthOfAButton();
+            MyCanvas.IsPointInsideAButton(8, 4);
+            MyCanvas.PrintButtons();
+            MyCanvas.CheckIfAnyButtonIsOverlapping();
+            MyCanvas.DeleteLastButton();
+            MyCanvas.ClearAllButton();
+        }
+    }
+}
