@@ -1,0 +1,73 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Project130219
+{
+   internal class MyButton
+    {
+        protected Point topLeft;
+        protected Point bottomRight;
+        private int width;
+        private int heigh;
+
+        public MyButton (Point topLeft, Point bottomRight)
+        {
+            this.topLeft = topLeft;
+            this.bottomRight = bottomRight;
+            SetBottomRight(bottomRight);
+            SetTopLeft(topLeft);
+        }
+
+        internal int GetWidth ()
+        {
+            return width;
+        }
+
+        internal int GetHeight ()
+        {
+            return heigh;
+        }
+
+        internal bool SetTopLeft (Point topLeft)
+        {
+            if (topLeft.GetX() < this.bottomRight.GetX() && topLeft.GetY() > this.bottomRight.GetY())
+            {
+                this.heigh = topLeft.GetY() - bottomRight.GetY();
+                this.width = bottomRight.GetX() - topLeft.GetX();
+                return true;
+            }
+            return false;
+        }
+
+        internal bool SetBottomRight (Point bottomRight)
+        {
+            if (bottomRight.GetX () > this.topLeft.GetX() && bottomRight.GetY() < this.topLeft.GetY())
+            {
+                this.heigh = topLeft.GetY() - bottomRight.GetY();
+                this.width = bottomRight.GetY() - topLeft.GetX();
+                return true;
+            }
+            return false;
+        }
+
+        internal Point GetTopLeft ()
+        {
+            return topLeft;
+        }
+
+        internal Point GetBottomRight ()
+        {
+            return bottomRight;
+        }
+
+   
+
+        public override string ToString()
+        {
+            return base.ToString();
+        }
+    }
+}
